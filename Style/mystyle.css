@@ -1,0 +1,168 @@
+body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Courier New", Courier, monospace;
+  margin: 0px;
+}
+
+.nav {
+  margin-top: 1%;
+  padding: 0px;
+  width: 100%;
+  background-color: transparent;
+  backdrop-filter: blur(30px);
+}
+.navbar {
+  display: flex;
+}
+.menu {
+  background-color: transparent;
+  text-align: right;
+  width: 80%;
+  margin: 10px;
+  font-weight: bold;
+}
+
+.menu-nav {
+  color: aliceblue;
+  padding-left: 10px;
+}
+.logo {
+  /* background-color: blue; */
+  color: whitesmoke;
+  margin: 10px;
+  margin-left: 30px;
+  font-weight: bold;
+}
+.main {
+  background-color: royalblue;
+  width: 100%;
+  margin-top: 10px;
+  padding: 2px;
+  height: 90%;
+}
+.main-display {
+  background-color: orange;
+  /* backdrop-filter: blur(5px); */
+  padding: 10px;
+
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+}
+.main-display-homepage {
+  background-color: transparent;
+  padding: 20px;
+  height: 80vh;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+}
+.card {
+  width: 20%;
+  height: 50%;
+  padding: 20px;
+  margin: 5px;
+  background-color: transparent;
+  backdrop-filter: blur(20px);
+  justify-content: center;
+}
+.h1 {
+  justify-content: center;
+  text-align: center;
+  color: aliceblue;
+  margin-top: 10%;
+  font-size: 50px;
+}
+h5 {
+  background-color: transparent;
+  text-align: center;
+  color: aliceblue;
+  margin: 0px;
+}
+.footer {
+  background-color: transparent;
+  color: black;
+  text-align: center;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.image {
+  background-color: blue;
+  width: 100%;
+  margin: 0;
+  height: 40%;
+  margin-top: 10px;
+  align-items: center;
+}
+p {
+  text-align: justify;
+  font-size: 10px;
+}
+.dasar {
+  width: 380px;
+  height: 350px;
+  background: white;
+  margin: 150px auto;
+  border-radius: 20px;
+  /*opacity: 0.3;*/
+  background: rgb(255, 250, 250, 0.7);
+}
+
+.user {
+  height: 36px;
+  width: 215px;
+  margin-left: 5px;
+  vertical-align: top;
+  border: 1px white;
+  text-align: center;
+  outline-color: white;
+  margin-top: 1px;
+}
+
+.username {
+  width: 260px;
+  height: 40px;
+  background: white;
+  margin: 30px auto;
+  border: 1px solid black;
+}
+.email {
+  width: 260px;
+  height: 40px;
+  background: white;
+  margin: 30px auto;
+  margin-top: -20px;
+  border: 1px solid black;
+}
+
+.password {
+  width: 260px;
+  height: 40px;
+  background: white;
+  margin: 30px auto;
+  margin-top: -20px;
+  border: 1px solid black;
+}
+
+.btn {
+  width: 250px;
+  height: 30px;
+  background: aqua;
+  border: 0;
+  color: white;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.btn:active {
+  transform: translateY(3px);
+  background-color: rgb(222, 156, 60);
+}
+
+.logo2 {
+  width: 100px;
+  height: 60px;
+  margin: 40px auto;
+}
