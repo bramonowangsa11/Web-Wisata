@@ -166,3 +166,32 @@ p {
   height: 60px;
   margin: 40px auto;
 }
+
+.search {
+  margin: 0px;
+  padding: 0px;
+  background-color: gainsboro;
+  /* backdrop-filter: blur(60px); */
+  width: 40%;
+  height: 20%;
+  border-radius: 10px;
+  text-align: center;
+  justify-content: center;
+}
+
+.search-bar {
+  margin: 5px;
+  margin-top: 10px;
+  color: aliceblue;
+  padding: 5px;
+  background-color: grey;
+  /* backdrop-filter: blur(60px); */
+  width: 60%;
+}
+.tabel-tiket {
+  margin-top: 50px;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  backdrop-filter: blur(80px);
+}

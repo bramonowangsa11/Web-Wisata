@@ -17,9 +17,9 @@
                 Gunungkidul
             </div>
             <div class="menu">
-                <a href="#" class="menu-nav" style="color: green;">Home</a>
+                <a href="index.php" class="menu-nav" style="color: green;">Home</a>
                 <a href="destinasi.php" class="menu-nav">Destinasi</a>
-                <a href="#" class="menu-nav">Tiket</a>
+                <a href="tiket.php" class="menu-nav">Tiket</a>
                 <a href="#" class="menu-nav">Bantuan</a>
             </div>
         </div>

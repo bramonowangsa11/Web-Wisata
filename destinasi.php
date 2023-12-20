@@ -17,7 +17,7 @@
             <div class="menu">
                 <a href="index.php" class="menu-nav">Home</a>
                 <a href="destinasi.php" class="menu-nav" style="color: green;">Destinasi</a>
-                <a href="#" class="menu-nav">Tiket</a>
+                <a href="tiket.php" class="menu-nav">Tiket</a>
                 <a href="#" class="menu-nav">Bantuan</a>
             </div>
         </div>
