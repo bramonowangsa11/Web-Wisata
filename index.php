@@ -1,3 +1,55 @@
+<?php
+
+// Memanggil file koneksi.php
+include "koneksi.php";
+session_start();
+// Perkondisian untuk mengecek apakah tombol submit sudah ditekan.
+if (isset($_POST['login'])) {
+    // Variable untuk menampung data $_POST yang dikirimkan melalui form.
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    //login
+    $result = mysqli_query($con, "SELECT * FROM pengguna WHERE nama_pengguna='$username' AND password_pengguna='$password'");
+    $row = mysqli_fetch_array($result);
+
+    // session login
+    $_SESSION['username'] = $row['nama_pengguna'];
+    $_SESSION['password'] = $row['password_pengguna'];
+
+
+    $num = mysqli_num_rows($result);
+
+    // ambil data untuk id_pengguna
+    $result2 = mysqli_query($con, "SELECT * FROM pengguna WHERE nama_pengguna='$username'");
+    $row2 = mysqli_fetch_array($result2);
+    //session pengguna
+    $_SESSION['nama'] = $row2['nama_pengguna'];
+    $_SESSION['idP'] = $row2['id_pengguna'];
+
+
+    // Perkondisian untuk mengecek apakah data yang dikirimkan melalui form kosong atau tidak.
+
+    if (empty($username) || empty($password)) {
+        $message = "Form tidak boleh kosong!!!";
+        echo "<script type='text/javascript'>alert('$message');</script>";
+    } else {
+        // Perkondisian untuk mengecek apakah data yang dikirimkan melalui form sesuai atau tidak.
+        if ($num == 1) {
+            $data = mysqli_fetch_assoc($result);
+
+            // Jika sesuai, maka akan menampilkan halaman home.php
+            header("Location: home.php");
+            exit();
+        } else {
+            // Jika tidak sesuai, maka akan menampilkan pesan "Username atau Password salah!!!"
+            echo "<center><h1>Username atau Password salah!!!</h1></center>";
+        }
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,31 +61,25 @@
 </head>
 
 <body background="Assets/gambar5.jpg">
-
-    <!-- navbar -->
-    <nav class="nav">
-        <div class="navbar">
-            <div class="logo">
-                Gunungkidul
-            </div>
-            <div class="menu">
-                <a href="index.php" class="menu-nav" style="color: green;">Home</a>
-                <a href="destinasi.php" class="menu-nav">Destinasi</a>
-                <a href="tiket.php" class="menu-nav">Tiket</a>
-                <a href="#" class="menu-nav">Bantuan</a>
-            </div>
-        </div>
-
-    </nav>
-    <!-- main -->
-    <main class="main-display-homepage">
-        <H1 class="h1">PESONA GUNUNGKIDUL</H1>
-    </main>
-    <!-- Footer -->
-    <footer class="footer">
-        Copyright @2023
-    </footer>
-
+    <div class="wrapper">
+        <form action="" method="post">
+            <div class="dasar">
+                <h1 style="text-align: center;padding-top: 20px;">Silakan Login</h1>
+                <div class="username">
+                    <div class="ico"><i style="float: left;margin-left: 5px;margin-top: 3px;" class="fa fa-user fa-2x"></div></i><input class="user" type="text" name="username" placeholder="Username" required>
+                </div>
+                <div class="password">
+                    <div class="ico">
+                        <i style="float: left;margin-left:7px;margin-top: 3px;" class="fa fa-lock fa-2x style=" color:white">
+                    </div>
+                    </i>
+                    <input class="user" name="password" style="margin-left: 8px;" type="Password" placeholder="Password" required>
+                    <button class="btn" name="login">LOGIN</button>
+        </form>
+        <p>Tidak punya akun? <a href="registrasi.php">Sign-up</a></p>
+    </div>
+    </div>
+    </div>
 </body>
 
 </html>

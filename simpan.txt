@@ -1,0 +1,47 @@
+<div class="box-bg">
+                <h1>Pemesanan Tiket</h1>
+                <form>
+                    <div class="form-tiket">
+                        <p>Kode Tiket</p>
+                        <input type="text" name="kode_tiket" placeholder="Kode Tiket">
+                        <p>Destinasi</p>
+                        <input type="text" name="destinasi_tiket" placeholder="Destinasi">
+                        <p>Tanggal Booking</p>
+                        <input type="date" name="tanggal_booking" placeholder="Tanggal Booking">
+                        <p>Harga</p>
+                        <input type="text" name="harga_tiket" placeholder="Harga">
+                        <p>Nama Pemesan</p>
+                        <input type="text" name="nama_pemesan" placeholder="Nama">
+                    </div>
+                </form>
+            </div>
+
+
+
+            <?php echo $_SESSION['harga'] ?>
+
+
+
+
+            
+// mengambil id dari url
+
+//ambil database destinasi
+// $cari3 = mysqli_query($con, "SELECT * FROM destinasi");
+// if ($cari3->num_rows > 0) {
+// while ($data3 = mysqli_fetch_array($cari3)) {
+// $ = $idDestinasi['id_destinasi'];
+// // $tujuan = $data['nama_destinasi'];
+// // $_SESSION['harga'] = $harga2;
+// }
+// }
+// ambil data dari destinasi
+// $id = $_SESSION['id_destinasi'];
+// $cari = mysqli_query($con, "SELECT * FROM destinasi WHERE id_destinasi LIKE'%$id%'");
+// if ($cari->num_rows > 0) {
+// while ($data = mysqli_fetch_array($cari)) {
+// $harga2 = $data['harga_tiket'];
+// $tujuan = $data['nama_destinasi'];
+// $_SESSION['harga'] = $harga2;
+// }
+// }

@@ -1,7 +1,12 @@
 <!-- PHP -->
 <?php
 include("koneksi.php");
-$result = mysqli_query($con, "SELECT * FROM destinasi")
+session_start();
+if (!isset($_SESSION['username']) and !isset($_SESSION['username'])) {
+    header("Location: index.php");
+    die();
+}
+//$result = mysqli_query($con, "SELECT * FROM destinasi")
 ?>
 
 <html>
@@ -20,7 +25,7 @@ $result = mysqli_query($con, "SELECT * FROM destinasi")
                 Gunungkidul
             </div>
             <div class="menu">
-                <a href="index.php" class="menu-nav">Home</a>
+                <a href="home.php" class="menu-nav">Home</a>
                 <a href="destinasi.php" class="menu-nav">Destinasi</a>
                 <a href="tiket.php" class="menu-nav" style="color: green;">Tiket</a>
                 <a href="#" class="menu-nav">Bantuan</a>
@@ -47,7 +52,7 @@ $result = mysqli_query($con, "SELECT * FROM destinasi")
                     <?php if ($result->num_rows > 0) : ?>
                         <table width='80%' border="1" align="center">
                             <tr>
-                                <th>id</th>
+                                <th>Id</th>
                                 <th>Nama Destinasi</th>
                                 <th>Tipe Tiket</th>
                                 <th>Harga Tiket</th>
@@ -60,7 +65,15 @@ $result = mysqli_query($con, "SELECT * FROM destinasi")
                                 echo "<td>" . $data['nama_destinasi'] . "</td>";
                                 echo "<td>" . $data['type_tiket'] . "</td>";
                                 echo "<td>" . $data['harga_tiket'] . "</td>";
-                                echo "<td><a href='index.php?id=$data[id_destinasi]'>PESAN</a></td></tr>";
+                                // echo "<td>" . $_SESSION['idDestinasi'] = $data['id_destinasi'] . "</td>";
+
+                            ?>
+                                <form action="" method="POST">
+                                    <?php
+                                    echo "<td><a href='pemesanan.php?id=$data[id_destinasi]'>PESAN</a></td></tr>";
+                                    ?>
+                                </form>
+                            <?php
                             }
                             ?>
                         </table> <?php else : ?>

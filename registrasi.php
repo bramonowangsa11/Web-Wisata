@@ -23,7 +23,7 @@ if (isset($_POST['signup'])) {
         $result = mysqli_query($con, "INSERT INTO pengguna (nama_pengguna, email_pengguna, password_pengguna) VALUES ('$username','$email', '$password')");
         $message2 = "Daftar Berhasil";
         echo "<script type='text/javascript'>alert('$message2');</script>";
-        header("Location: login.php");
+        header("Location: index.php");
         exit();
     }
 }
@@ -67,7 +67,7 @@ if (isset($_POST['signup'])) {
                     <input class="user" name="password" style="margin-left: 8px;" type="Password" placeholder="Password" required>
                     <button class="btn" name="signup">DAFTAR</button>
         </form>
-        <p>Sudah punya akun? <a href="login.php">Login</a></p>
+        <p>Sudah punya akun? <a href="index.php">Login</a></p>
     </div>
     </div>
     </div>

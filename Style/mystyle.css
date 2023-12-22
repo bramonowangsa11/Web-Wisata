@@ -51,7 +51,6 @@ body {
   justify-content: center;
 }
 .main-display-homepage {
-  background-color: transparent;
   padding: 20px;
   height: 80vh;
   margin: 10px;
@@ -170,7 +169,8 @@ p {
 .search {
   margin: 0px;
   padding: 0px;
-  background-color: gainsboro;
+  /* background-color: gainsboro; */
+  background: rgba(255, 250, 250, 0.313);
   /* backdrop-filter: blur(60px); */
   width: 40%;
   height: 20%;
@@ -188,10 +188,43 @@ p {
   /* backdrop-filter: blur(60px); */
   width: 60%;
 }
+
 .tabel-tiket {
   margin-top: 50px;
   justify-content: center;
   align-items: center;
   background-color: transparent;
   backdrop-filter: blur(80px);
+}
+
+.box-bg {
+  background-color: aquamarine;
+  width: 30%;
+  height: 80%;
+  border-radius: 10px;
+  justify-content: center;
+  text-align: center;
+}
+
+.form-tiket {
+  text-align: left;
+  margin-left: 20px;
+}
+.form-tiket input {
+  width: 90%;
+}
+.tombol-pesan {
+  margin-top: 20px;
+  background-color: aqua;
+  border-radius: 10px;
+  border-color: blue;
+}
+
+.main-pemesanan {
+  background-color: yellowgreen;
+  padding: 20px;
+  height: 80vh;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
 }

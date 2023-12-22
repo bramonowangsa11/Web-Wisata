@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['username']) and !isset($_SESSION['password'])) {
+    header("Location: index.php");
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +24,7 @@
                 Gunungkidul
             </div>
             <div class="menu">
-                <a href="index.php" class="menu-nav">Home</a>
+                <a href="home.php" class="menu-nav">Home</a>
                 <a href="destinasi.php" class="menu-nav" style="color: green;">Destinasi</a>
                 <a href="tiket.php" class="menu-nav">Tiket</a>
                 <a href="#" class="menu-nav">Bantuan</a>
