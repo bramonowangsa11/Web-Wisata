@@ -29,7 +29,7 @@ if (isset($_GET['id'])) {
     }
 }
 
-$pdf->Cell(20, 6, 'ID', 1, 0);
+$pdf->Cell(20, 6, 'ID TIKET', 1, 0);
 $pdf->Cell(50, 6, 'DESTINASI', 1, 0);
 $pdf->Cell(25, 6, 'TANGGAL', 1, 0);
 $pdf->Cell(50, 6, 'HARGA', 1, 1);

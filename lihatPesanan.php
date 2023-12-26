@@ -26,16 +26,16 @@ $result = mysqli_query($con, "SELECT * FROM tiket")
             <div class="menu">
                 <a href="home.php" class="menu-nav">Home</a>
                 <a href="destinasi.php" class="menu-nav">Destinasi</a>
-                <a href="tiket.php" class="menu-nav" style="color: green;">Tiket</a>
-                <a href="lihatPesanan.php" class="menu-nav">Pemesanan</a>
+                <a href="tiket.php" class="menu-nav">Tiket</a>
+                <a href="#" class="menu-nav">Bantuan</a>
             </div>
         </div>
 
     </nav>
     <!-- main -->
-    <main class="main-display-homepage">
+    <main class="display-home">
         <div class="search">
-            Pesanan
+            <h1>Pesanan</h1>
             <!-- <div>
                 <form action="" method="GET">
                     <input class="search-bar" type="text" name="search-bar" placeholder="cari tiket destinasi">
@@ -45,7 +45,6 @@ $result = mysqli_query($con, "SELECT * FROM tiket")
                 <?php
                 // if (isset($_GET['search-bar'])) :
                 //     $search = $_GET['search-bar'];
-
                 // if (isset($_GET['nama'])) :
                 $id = $_SESSION['idP'];
                 // $result = mysqli_query($con, "SELECT * FROM tiket WHERE nama_pemesan LIKE'%$search%'");
@@ -53,7 +52,7 @@ $result = mysqli_query($con, "SELECT * FROM tiket")
                 ?>
                 <!-- menampilkan data yang dicari -->
                 <?php if ($result->num_rows > 0) : ?>
-                    <table width='80%' border="1" align="center" style="margin-top: 20px;">
+                    <table width='80%' align="center" border="1" style="margin-top: 20px;">
                         <tr>
                             <th>Id</th>
                             <th>Nama Destinasi</th>
@@ -69,11 +68,11 @@ $result = mysqli_query($con, "SELECT * FROM tiket")
                             echo "<td>" . $data['tanggal_pemesanan'] . "</td>";
                             echo "<td>" . $data['harga_pemesanan'] . "</td>";
                             echo "<td>" . $data['nama_pemesan'] . "</td>";
-                            $_SESSION['id_pemesanan'] = $data['id_pemesanan'];
+                            //$_SESSION['id_pemesanan'] = $data['id_pemesanan'];
                         ?>
                             <form action="" method="POST">
                                 <?php
-                                echo "<td><a href='cetak_tiket.php?id=$data[id_pemesanan]'>Cetak</a>||<a href='editPesanan.php'>Ubah</a>||<a href='hapusPesanan.php?id=$data[id_pemesanan]'>Batalkan</a></td></tr>";
+                                echo "<td><a href='cetak_tiket.php?id=$data[id_pemesanan]'>Cetak</a>||<a href='editPesanan.php?id=$data[id_pemesanan]'>Ubah</a>||<a href='hapusPesanan.php?id=$data[id_pemesanan]'>Batalkan</a></td></tr>";
                                 ?>
                             </form>
                         <?php
@@ -111,8 +110,6 @@ $result = mysqli_query($con, "SELECT * FROM tiket")
                 ?>
             </div>
         </div>
-
-
     </main>
     <!-- Footer -->
     <footer class="footer">

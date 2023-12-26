@@ -27,14 +27,14 @@ if (!isset($_SESSION['username']) and !isset($_SESSION['username'])) {
             <div class="menu">
                 <a href="home.php" class="menu-nav">Home</a>
                 <a href="destinasi.php" class="menu-nav">Destinasi</a>
-                <a href="tiket.php" class="menu-nav" style="color: green;">Tiket</a>
-                <a href="#" class="menu-nav">Bantuan</a>
+                <a href="tiket.php" class="menu-nav" style="color: aqua;">Tiket</a>
+                <a href="lihatPesanan.php" class="menu-nav">Pemesanan</a>
             </div>
         </div>
 
     </nav>
     <!-- main -->
-    <main class="main-display-homepage">
+    <main class="display-home">
         <div class="search">
             Cari Tiket
             <div>
@@ -50,13 +50,12 @@ if (!isset($_SESSION['username']) and !isset($_SESSION['username'])) {
                 ?>
                     <!-- menampilkan data yang dicari -->
                     <?php if ($result->num_rows > 0) : ?>
-                        <table width='80%' border="1" align="center">
+                        <table width='80%' align="center">
                             <tr>
                                 <th>Id</th>
                                 <th>Nama Destinasi</th>
                                 <th>Tipe Tiket</th>
                                 <th>Harga Tiket</th>
-                                <th>Tiket</th>
                             </tr>
                             <?php
                             while ($data = mysqli_fetch_array($result)) {

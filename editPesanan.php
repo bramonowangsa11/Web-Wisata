@@ -15,13 +15,15 @@ if (!isset($_SESSION['username']) and !isset($_SESSION['password'])) {
 // }
 
 //ambil data untuk di masukan ke value
-$id5 = $_SESSION['id_pemesanan'];
-$cari = mysqli_query($con, "SELECT * FROM tiket WHERE id_pemesanan LIKE'%$id5%'");
-if ($cari->num_rows > 0) {
-    while ($data = mysqli_fetch_array($cari)) {
-        $harga2 = $data['harga_pemesanan'];
-        $tujuan = $data['destinasi_pemesanan'];
-        $nama2 = $data['nama_pemesan'];
+if (isset($_GET['id'])) {
+    $id5 = $_GET['id'];
+    $cari = mysqli_query($con, "SELECT * FROM tiket WHERE id_pemesanan LIKE'%$id5%'");
+    if ($cari->num_rows > 0) {
+        while ($data = mysqli_fetch_array($cari)) {
+            $harga2 = $data['harga_pemesanan'];
+            $tujuan = $data['destinasi_pemesanan'];
+            $nama2 = $data['nama_pemesan'];
+        }
     }
 }
 
@@ -29,17 +31,24 @@ if ($cari->num_rows > 0) {
 if (isset($_POST['submit'])) {
     // Variable untuk menampung data $_POST yang dikirimkan melalui form.
     //$destinasi = $_POST['destinasi_tiket'];
-    $tanggal = $_POST['tanggal_booking'];
+    $tanggal = htmlspecialchars($_POST['tanggal_booking']);
     //$harga = $_POST['harga_tiket'];
-    $nama = $_POST['nama_pemesan'];
+    $nama = htmlspecialchars($_POST['nama_pemesan']);
 
-    // Syntax untuk menambahkan data ke table mahasiswa
-    $result = mysqli_query($con, "UPDATE tiket SET tanggal_pemesanan='$tanggal',nama_pemesan='$nama' WHERE id_pemesanan ='$id5'");
+    //validasi data kosong
+    if ($tanggal == NULL || $nama == NULL) {
+        $message = "DATA TIDAK BOLEH KOSONG";
+        echo "<script type='text/javascript'>alert('$message');</script>";
+    } else {
 
-    // Menampilkan pesan jika data berhasil disimpan.
-    echo "Data berhasil diubah";
-    header("Location:lihatPesanan.php");
-    exit();
+        // Syntax untuk menambahkan data ke table mahasiswa
+        $result = mysqli_query($con, "UPDATE tiket SET tanggal_pemesanan='$tanggal',nama_pemesan='$nama' WHERE id_pemesanan ='$id5'");
+
+        // Menampilkan pesan jika data berhasil disimpan.
+        echo "Data berhasil diubah";
+        header("Location:lihatPesanan.php");
+        exit();
+    }
 }
 ?>
 <!-- ambil data dari datbase untuk value -->

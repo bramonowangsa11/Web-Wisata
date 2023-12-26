@@ -1,30 +1,38 @@
 <?php
+session_start();
 // Memanggil file koneksi.php
 include_once("koneksi.php");
 
 // Perkondisian untuk mengecek apakah tombol submit sudah ditekan.
 if (isset($_POST['signup'])) {
-    // Variable untuk menampung data $_POST yang dikirimkan melalui form.
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    if ($_POST['captcha_code'] == $_SESSION['captcha_code']) {
 
-    // Validate password strength
-    $uppercase = preg_match('@[A-Z]@', $password);
-    $lowercase = preg_match('@[a-z]@', $password);
-    $number    = preg_match('@[0-9]@', $password);
-    $specialChars = preg_match('@[^\w]@', $password);
 
-    if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
-        $message = "Password harus mengandung huruf besar, huruf kecil, angka, spesial karakter dan karakter spesial. Minimal 8 karakter.";
-        echo "<script type='text/javascript'>alert('$message');</script>";
+        // Variable untuk menampung data $_POST yang dikirimkan melalui form.
+        $username = htmlspecialchars($_POST['username']);
+        $email = htmlspecialchars($_POST['email']);
+        $password = htmlspecialchars($_POST['password']);
+
+        // Validate password strength
+        $uppercase = preg_match('@[A-Z]@', $password);
+        $lowercase = preg_match('@[a-z]@', $password);
+        $number    = preg_match('@[0-9]@', $password);
+        $specialChars = preg_match('@[^\w]@', $password);
+
+        if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
+            $message = "Password harus mengandung huruf besar, huruf kecil, angka, spesial karakter dan karakter spesial. Minimal 8 karakter.";
+            echo "<script type='text/javascript'>alert('$message');</script>";
+        } else {
+            // signup
+            $result = mysqli_query($con, "INSERT INTO pengguna (nama_pengguna, email_pengguna, password_pengguna) VALUES ('$username','$email', '$password')");
+            $message2 = "Daftar Berhasil";
+            echo "<script type='text/javascript'>alert('$message2');</script>";
+            header("Location: index.php");
+            exit();
+        }
     } else {
-        // signup
-        $result = mysqli_query($con, "INSERT INTO pengguna (nama_pengguna, email_pengguna, password_pengguna) VALUES ('$username','$email', '$password')");
-        $message2 = "Daftar Berhasil";
-        echo "<script type='text/javascript'>alert('$message2');</script>";
-        header("Location: index.php");
-        exit();
+        $message3 = "Kode Captcha Salah";
+        echo "<script type='text/javascript'>alert('$message3');</script>";
     }
 }
 ?>
@@ -44,7 +52,7 @@ if (isset($_POST['signup'])) {
     <div class="wrapper">
         <form action="registrasi.php" method="post">
             <div class="dasar">
-                <h1 style="text-align: center;padding-top: 20px;">Silakan buat akun</h1>
+                <h1 style="text-align: center;padding-top: 20px;">Silahkan buat akun</h1>
                 <div class="username">
                     <div class="ico">
                         <i style="float: left;margin-left: 5px;margin-top: 3px;" class="fa fa-user fa-2x">
@@ -65,12 +73,18 @@ if (isset($_POST['signup'])) {
                     </div>
                     </i>
                     <input class="user" name="password" style="margin-left: 8px;" type="Password" placeholder="Password" required>
+                    <br>
+                    <div>
+                        <img class="captcha" src='captcha.php' />
+                        <input name='captcha_code' type='text'>
+                    </div>
                     <button class="btn" name="signup">DAFTAR</button>
         </form>
         <p>Sudah punya akun? <a href="index.php">Login</a></p>
     </div>
     </div>
     </div>
+
 </body>
 
 </html>

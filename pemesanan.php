@@ -17,15 +17,22 @@ if (isset($_GET['id'])) {
         }
     }
 }
+
+
+//validasi input
 if (isset($_POST['submit'])) {
     // Variable untuk menampung data $_POST yang dikirimkan melalui form.
-    $destinasi = $_POST['destinasi_tiket'];
-    $tanggal = $_POST['tanggal_booking'];
-    $harga = $_POST['harga_tiket'];
-    $nama = $_POST['nama_pemesan'];
-    $idPengguna = $_SESSION['idP'];
-    $idDestinasi = $_SESSION['id_destinasi'];
+    $destinasi = htmlspecialchars($_POST['destinasi_tiket']);
+    $tanggal = htmlspecialchars($_POST['tanggal_booking']);
+    $harga = htmlspecialchars($_POST['harga_tiket']);
+    $nama = htmlspecialchars($_POST['nama_pemesan']);
+    $idPengguna = htmlspecialchars($_SESSION['idP']);
+    $idDestinasi = htmlspecialchars($_SESSION['id_destinasi']);
 
+    //validasi input
+    // if ($destinasi == NULL || $tanggal == NULL || $harga == NULL || $nama == NULL) {
+
+    // } else {
     // Syntax untuk menambahkan data ke table mahasiswa
     $result = mysqli_query($con, "INSERT INTO tiket(destinasi_pemesanan,tanggal_pemesanan,harga_pemesanan,nama_pemesan,id_pengguna,id_destinasi) value('$destinasi','$tanggal','$harga','$nama','$idPengguna','$idDestinasi')");
 
@@ -33,7 +40,12 @@ if (isset($_POST['submit'])) {
     echo "Data berhasil disimpan";
     header("Location:lihatPesanan.php");
     exit();
+    //}
 }
+
+//validasi input
+
+
 ?>
 
 <?php
@@ -61,28 +73,28 @@ if (isset($_POST['submit'])) {
                 Gunungkidul
             </div>
             <div class="menu">
-                <a href="home.php" class="menu-nav" style="color: green;">Home</a>
+                <a href="home.php" class="menu-nav">Home</a>
                 <a href="destinasi.php" class="menu-nav">Destinasi</a>
                 <a href="tiket.php" class="menu-nav">Tiket</a>
-                <a href="lihatPemesanan.php" class="menu-nav">Pemesanan</a>
+                <a href="lihatPesanan.php" class="menu-nav">Pemesanan</a>
             </div>
         </div>
     </nav>
     <!-- main -->
     <main>
-        <div class="main-pemesanan">
+        <div class=" main-pemesanan">
             <div class="box-bg">
                 <h1>Tiket</h1>
                 <form action="" method="POST">
                     <div class="form-tiket">
                         <p>Destinasi</p>
-                        <input type="text" name="destinasi_tiket" placeholder="Destinasi" value="<?php echo $tujuan ?>">
+                        <input type="text" name="destinasi_tiket" placeholder="Destinasi" value="<?php echo $tujuan ?>" required>
                         <p>Tanggal Booking</p>
-                        <input type="date" name="tanggal_booking" placeholder="Tanggal Booking">
+                        <input type="date" name="tanggal_booking" placeholder="Tanggal Booking" required>
                         <p>Harga</p>
-                        <input type="text" name="harga_tiket" placeholder="Harga" value="<?php echo $harga2 ?>">
+                        <input type="text" name="harga_tiket" placeholder="Harga" value="<?php echo $harga2 ?>" required>
                         <p>Nama Pemesan</p>
-                        <input type="text" name="nama_pemesan" placeholder="Nama" value="<?php echo $_SESSION['username'] ?>">
+                        <input type="text" name="nama_pemesan" placeholder="Nama" value="<?php echo $_SESSION['username'] ?>" required>
                     </div>
                     <a href="">
                         <input class="tombol-pesan" type="submit" name="submit" value="Pesan">
@@ -91,7 +103,7 @@ if (isset($_POST['submit'])) {
                 </form>
 
                 <?php
-                echo "<a href='lihatPesanan.php' class='menu-nav'> Lihat Pesanan</a>"
+                //echo "<a href='lihatPesanan.php' class='menu-nav'> Lihat Pesanan</a>"
                 ?>
 
             </div>

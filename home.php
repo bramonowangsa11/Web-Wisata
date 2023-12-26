@@ -24,7 +24,7 @@ if (!isset($_SESSION['username'])) {
                 Gunungkidul
             </div>
             <div class="menu">
-                <a href="home.php" class="menu-nav" style="color: green;">Home</a>
+                <a href="home.php" class="menu-nav" style="color: aqua;">Home</a>
                 <a href="destinasi.php" class="menu-nav">Destinasi</a>
                 <a href="tiket.php" class="menu-nav">Tiket</a>
                 <a href="lihatPesanan.php" class="menu-nav">Lihat Pemesanan</a>
@@ -32,7 +32,7 @@ if (!isset($_SESSION['username'])) {
         </div>
     </nav>
     <!-- main -->
-    <main class="main-display-homepage">
+    <main class="display-home">
         <H1 class="h1">PESONA GUNUNGKIDUL</H1>
     </main>
     <!-- Footer -->
