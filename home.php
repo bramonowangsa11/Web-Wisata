@@ -27,7 +27,7 @@ if (!isset($_SESSION['username'])) {
                 <a href="home.php" class="menu-nav" style="color: aqua;">Home</a>
                 <a href="destinasi.php" class="menu-nav">Destinasi</a>
                 <a href="tiket.php" class="menu-nav">Tiket</a>
-                <a href="lihatPesanan.php" class="menu-nav">Lihat Pemesanan</a>
+                <a href="contact.php" class="menu-nav">Contact</a>
             </div>
         </div>
     </nav>

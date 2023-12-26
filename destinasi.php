@@ -14,7 +14,8 @@ if (!isset($_SESSION['username']) and !isset($_SESSION['password'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pesona Gunungkidul</title>
-    <link rel="stylesheet" href="./Style/mystyle.css" </head>
+    <link rel="stylesheet" href="./Style/mystyle.css">
+</head>
 
 <body background="Assets/gambar5.jpg">
     <!-- navbar -->
@@ -27,7 +28,7 @@ if (!isset($_SESSION['username']) and !isset($_SESSION['password'])) {
                 <a href="home.php" class="menu-nav">Home</a>
                 <a href="destinasi.php" class="menu-nav" style="color: aqua;">Destinasi</a>
                 <a href="tiket.php" class="menu-nav">Tiket</a>
-                <a href="#" class="menu-nav">Bantuan</a>
+                <a href="contact.php" class="menu-nav">Contact</a>
             </div>
         </div>
 

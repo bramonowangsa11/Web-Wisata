@@ -27,7 +27,7 @@ $result = mysqli_query($con, "SELECT * FROM tiket")
                 <a href="home.php" class="menu-nav">Home</a>
                 <a href="destinasi.php" class="menu-nav">Destinasi</a>
                 <a href="tiket.php" class="menu-nav">Tiket</a>
-                <a href="#" class="menu-nav">Bantuan</a>
+                <a href="contact.php" class="menu-nav">Contact</a>
             </div>
         </div>
 

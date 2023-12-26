@@ -86,7 +86,7 @@ if (isset($_POST['submit'])) {
     <main>
         <div class="main-pemesanan">
             <div class="box-bg">
-                <h1>Tiket <?php echo $_SESSION['id_pemesanan'] ?> </h1>
+                <h1>Tiket</h1>
                 <form action="" method="POST">
                     <div class="form-tiket">
                         <p>Destinasi</p>
