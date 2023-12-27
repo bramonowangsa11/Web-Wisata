@@ -14,6 +14,9 @@ if (isset($_POST['login'])) {
     $num = mysqli_num_rows($result);
     $row = mysqli_fetch_array($result);
 
+    //
+
+
 
 
     // ambil data untuk id_pengguna
@@ -31,7 +34,7 @@ if (isset($_POST['login'])) {
         echo "<script type='text/javascript'>alert('$message');</script>";
     } else {
         // Perkondisian untuk mengecek apakah data yang dikirimkan melalui form sesuai atau tidak.
-        if ($num == 1) {
+        if ($num > 0) {
             $passwordsekarang = $row['password_pengguna'];
             //$data = mysqli_fetch_assoc($result);
             if (password_verify($password, $passwordsekarang)) {

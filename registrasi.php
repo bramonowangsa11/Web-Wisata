@@ -7,7 +7,12 @@ include_once("koneksi.php");
 if (isset($_POST['signup'])) {
     if ($_POST['captcha_code'] == $_SESSION['captcha_code']) {
 
-
+        $result2 = mysqli_query($con, "SELECT * FROM pengguna");
+        $num2 = mysqli_num_rows($result2);
+        // $row2 = mysqli_fetch_array($result2);
+        while ($data = mysqli_fetch_array($result2)) {
+            $user = $data['nama_pengguna'];
+        }
         // Variable untuk menampung data $_POST yang dikirimkan melalui form.
         $username = htmlspecialchars($_POST['username']);
         $email = htmlspecialchars($_POST['email']);
@@ -24,6 +29,9 @@ if (isset($_POST['signup'])) {
 
         if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
             $message = "Password harus mengandung huruf besar, huruf kecil, angka, spesial karakter dan karakter spesial. Minimal 8 karakter.";
+            echo "<script type='text/javascript'>alert('$message');</script>";
+        } else if ($username == $user) {
+            $message = "Username Sudah Tersedia!!!";
             echo "<script type='text/javascript'>alert('$message');</script>";
         } else {
             // signup
