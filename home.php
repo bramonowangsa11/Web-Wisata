@@ -37,7 +37,7 @@ if (!isset($_SESSION['username'])) {
     </main>
     <!-- Footer -->
     <footer class="footer">
-        Copyright @2023 <?php echo $_SESSION['idP'] ?>
+        Copyright @2023 <?php echo $_SESSION['idP'] ?> <a class="logout" href="logout.php">Logout</a>
     </footer>
 
 </body>

@@ -45,3 +45,10 @@
 // $_SESSION['harga'] = $harga2;
 // }
 // }
+
+
+
+
+
+
+<a href='cetak_tiket.php?id=$data[id_pemesanan]'>Cetak</a>||

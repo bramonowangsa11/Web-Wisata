@@ -131,6 +131,15 @@ p {
   /*opacity: 0.3;*/
   background: rgb(255, 250, 250, 0.7);
 }
+.box-login {
+  width: 380px;
+  height: 300px;
+  background: white;
+  margin: 130px auto;
+  border-radius: 20px;
+  /*opacity: 0.3;*/
+  background: rgb(255, 250, 250, 0.7);
+}
 
 .user {
   height: 36px;
@@ -169,11 +178,11 @@ p {
 }
 
 .btn {
-  width: 250px;
+  width: 260px;
   height: 30px;
   background: aqua;
   border: 0;
-  color: white;
+  color: black;
   margin-top: 30px;
   cursor: pointer;
 }
@@ -273,4 +282,8 @@ p {
   vertical-align: middle;
   text-align: center;
   margin-top: 10px;
+}
+.logout {
+  color: aliceblue;
+  text-align: right;
 }

@@ -10,25 +10,21 @@ if (isset($_POST['login'])) {
     $password = $_POST['password'];
 
     //login
-    $result = mysqli_query($con, "SELECT * FROM pengguna WHERE nama_pengguna='$username' AND password_pengguna='$password'");
+    $result = mysqli_query($con, "SELECT * FROM pengguna WHERE nama_pengguna='$username'");
+    $num = mysqli_num_rows($result);
     $row = mysqli_fetch_array($result);
 
-    // session login
-    $_SESSION['username'] = $row['nama_pengguna'];
-    $_SESSION['password'] = $row['password_pengguna'];
 
-
-    $num = mysqli_num_rows($result);
 
     // ambil data untuk id_pengguna
-    $result2 = mysqli_query($con, "SELECT * FROM pengguna WHERE nama_pengguna='$username'");
-    $row2 = mysqli_fetch_array($result2);
+    // $result2 = mysqli_query($con, "SELECT * FROM pengguna WHERE nama_pengguna='$username'");
+    // $row2 = mysqli_fetch_array($result2);
     //session pengguna
-    $_SESSION['nama'] = $row2['nama_pengguna'];
-    $_SESSION['idP'] = $row2['id_pengguna'];
+
 
 
     // Perkondisian untuk mengecek apakah data yang dikirimkan melalui form kosong atau tidak.
+    //password
 
     if (empty($username) || empty($password)) {
         $message = "Form tidak boleh kosong!!!";
@@ -36,11 +32,18 @@ if (isset($_POST['login'])) {
     } else {
         // Perkondisian untuk mengecek apakah data yang dikirimkan melalui form sesuai atau tidak.
         if ($num == 1) {
-            $data = mysqli_fetch_assoc($result);
-
-            // Jika sesuai, maka akan menampilkan halaman home.php
-            header("Location: home.php");
-            exit();
+            $passwordsekarang = $row['password_pengguna'];
+            //$data = mysqli_fetch_assoc($result);
+            if (password_verify($password, $passwordsekarang)) {
+                // session login
+                $_SESSION['username'] = $row['nama_pengguna'];
+                $_SESSION['password'] = $row['password_pengguna'];
+                $_SESSION['nama'] = $row['nama_pengguna'];
+                $_SESSION['idP'] = $row['id_pengguna'];
+                // Jika sesuai, maka akan menampilkan halaman home.php
+                header("Location: home.php");
+                exit();
+            }
         } else {
             // Jika tidak sesuai, maka akan menampilkan pesan "Username atau Password salah!!!"
             echo "<center><h1>Username atau Password salah!!!</h1></center>";
@@ -63,8 +66,8 @@ if (isset($_POST['login'])) {
 <body background="Assets/gambar5.jpg">
     <div class="wrapper">
         <form action="" method="post">
-            <div class="dasar">
-                <h1 style="text-align: center;padding-top: 20px;">Silakan Login</h1>
+            <div class="box-login">
+                <h1 style="text-align: center;padding-top: 20px;">LOGIN</h1>
                 <div class="username">
                     <div class="ico"><i style="float: left;margin-left: 5px;margin-top: 3px;" class="fa fa-user fa-2x"></div></i><input class="user" type="text" name="username" placeholder="Username" required>
                 </div>
@@ -76,7 +79,7 @@ if (isset($_POST['login'])) {
                     <input class="user" name="password" style="margin-left: 8px;" type="Password" placeholder="Password" required>
                     <button class="btn" name="login">LOGIN</button>
         </form>
-        <p>Tidak punya akun? <a href="registrasi.php">Sign-up</a></p>
+        <p style="color: black;">Tidak punya akun? <a href="registrasi.php">Sign-up</a></p>
     </div>
     </div>
     </div>

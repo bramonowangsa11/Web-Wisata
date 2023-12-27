@@ -18,13 +18,16 @@ if (isset($_POST['signup'])) {
         $lowercase = preg_match('@[a-z]@', $password);
         $number    = preg_match('@[0-9]@', $password);
         $specialChars = preg_match('@[^\w]@', $password);
+        //enkripsi password
+        $epassword = password_hash($password, PASSWORD_DEFAULT);
+
 
         if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
             $message = "Password harus mengandung huruf besar, huruf kecil, angka, spesial karakter dan karakter spesial. Minimal 8 karakter.";
             echo "<script type='text/javascript'>alert('$message');</script>";
         } else {
             // signup
-            $result = mysqli_query($con, "INSERT INTO pengguna (nama_pengguna, email_pengguna, password_pengguna) VALUES ('$username','$email', '$password')");
+            $result = mysqli_query($con, "INSERT INTO pengguna (nama_pengguna, email_pengguna, password_pengguna) VALUES ('$username','$email', '$epassword')");
             $message2 = "Daftar Berhasil";
             echo "<script type='text/javascript'>alert('$message2');</script>";
             header("Location: index.php");
@@ -52,7 +55,7 @@ if (isset($_POST['signup'])) {
     <div class="wrapper">
         <form action="registrasi.php" method="post">
             <div class="dasar">
-                <h1 style="text-align: center;padding-top: 20px;">Silahkan buat akun</h1>
+                <h1 style="text-align: center;padding-top: 20px;">REGISTRASI</h1>
                 <div class="username">
                     <div class="ico">
                         <i style="float: left;margin-left: 5px;margin-top: 3px;" class="fa fa-user fa-2x">
@@ -80,7 +83,7 @@ if (isset($_POST['signup'])) {
                     </div>
                     <button class="btn" name="signup">DAFTAR</button>
         </form>
-        <p>Sudah punya akun? <a href="index.php">Login</a></p>
+        <p style="color:black ;">Sudah punya akun? <a href="index.php">Login</a></p>
     </div>
     </div>
     </div>

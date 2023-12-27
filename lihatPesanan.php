@@ -72,11 +72,18 @@ $result = mysqli_query($con, "SELECT * FROM tiket")
                         ?>
                             <form action="" method="POST">
                                 <?php
-                                echo "<td><a href='cetak_tiket.php?id=$data[id_pemesanan]'>Cetak</a>||<a href='editPesanan.php?id=$data[id_pemesanan]'>Ubah</a>||<a href='hapusPesanan.php?id=$data[id_pemesanan]'>Batalkan</a></td></tr>";
+                                echo "<td><a href='editPesanan.php?id=$data[id_pemesanan]'>Ubah</a>||<a href='hapusPesanan.php?id=$data[id_pemesanan]'>Batalkan</a></td></tr>";
+
+
                                 ?>
+
                             </form>
                         <?php
                         }
+                        ?>
+                        <?php
+                        echo "<tr><a style='color:white;font-weight:bold' href='cetak_tiket.php?id=$_SESSION[idP]'>Cetak</a></tr>";
+
                         ?>
                     </table>
                 <?php else : ?>
@@ -113,7 +120,7 @@ $result = mysqli_query($con, "SELECT * FROM tiket")
     </main>
     <!-- Footer -->
     <footer class="footer">
-        Copyright @2023
+        Copyright @2023 <?php echo $_SESSION['idP'] ?> <a class="logout" href="logout.php">Logout</a>
     </footer>
 
 </body>
