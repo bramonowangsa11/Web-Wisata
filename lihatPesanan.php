@@ -61,25 +61,26 @@ $result = mysqli_query($con, "SELECT * FROM tiket")
                             <th>Nama</th>
                         </tr>
                         <?php
+                        $total = 0;
                         while ($data = mysqli_fetch_array($result)) {
                             echo "<tr>";
                             echo "<td>" . $data['id_pemesanan'] . "</td>";
                             echo "<td>" . $data['destinasi_pemesanan'] . "</td>";
                             echo "<td>" . $data['tanggal_pemesanan'] . "</td>";
-                            echo "<td>" . $data['harga_pemesanan'] . "</td>";
+                            echo "<td>" . number_format($data['harga_pemesanan']) . "</td>";
                             echo "<td>" . $data['nama_pemesan'] . "</td>";
+                            $total += $data['harga_pemesanan'];
                             //$_SESSION['id_pemesanan'] = $data['id_pemesanan'];
                         ?>
                             <form action="" method="POST">
                                 <?php
                                 echo "<td><a href='editPesanan.php?id=$data[id_pemesanan]'>Ubah</a>||<a href='hapusPesanan.php?id=$data[id_pemesanan]'>Batalkan</a></td></tr>";
-
-
                                 ?>
 
                             </form>
                         <?php
                         }
+                        $_SESSION['total'] = $total;
                         ?>
                         <?php
                         echo "<tr><a style='color:white;font-weight:bold' href='cetak_tiket.php?id=$_SESSION[idP]'>Cetak</a></tr>";
